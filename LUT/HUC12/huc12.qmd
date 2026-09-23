@@ -1,0 +1,62 @@
+<!DOCTYPE qgis PUBLIC 'http://mrcc.com/qgis.dtd' 'SYSTEM'>
+<qgis version="3.34.15-Prizren">
+  <identifier>WBD_HU_12_IA</identifier>
+  <parentidentifier></parentidentifier>
+  <language>EN</language>
+  <type>dataset</type>
+  <title>WBD_HU_12_IA</title>
+  <abstract>This data set is a complete digital hydrologic unit boundary layer to the Subwatershed (12-digit) 6th level for the State of Iowa. This data set consists of geo-referenced digital data and associated attributes created in accordance with the "FGDC Proposal, Version 1.0 - Federal Standards For Delineation of Hydrologic Unit Boundaries 3/01/02"(http://www.ftw.nrcs.usda.gov/huc_data.html). Polygons are attributed with hydrologic unit codes for 4th level sub-basins, 5th level watersheds, 6th level subwatersheds, name, size, downstream hydrologic unit, type of watershed, non-contributing areas and flow modification. Arcs are attributed with the highest hydrologic unit code for each watershed, linesource and a metadata reference file.
+
+The Watershed and Subwatershed hydrologic unit boundaries provide a uniquely identified and uniform method of subdividing large drainage areas. The smaller sized 6th level sub-watersheds (up to 40,000 acres) are useful for numerous application programs supported by a variety of local, State, and Federal Agencies. This data set is intended to be used as a tool for water-resource management and planning activities, particularly for site-specific and localized studies requiring a level of detail provided by large-scale map information. The dataset will be appended to a larger seamless nationally consistant geospatial database as other states complete their portion of the watershed boundary dataset.</abstract>
+  <keywords vocabulary="gmd:topicCategory">
+    <keyword>inlandWaters</keyword>
+    <keyword>HUC</keyword>
+  </keywords>
+  <contact>
+    <contactAddress>
+      <type></type>
+      <address></address>
+      <city></city>
+      <administrativearea></administrativearea>
+      <postalcode></postalcode>
+      <country></country>
+    </contactAddress>
+    <name></name>
+    <organization></organization>
+    <position></position>
+    <voice>319-335-1492</voice>
+    <fax></fax>
+    <email>calvin.wolter@dnr.iowa.gov</email>
+    <role>Point of contact</role>
+  </contact>
+  <links>
+    <link url="file://\\D_IGS_60F35\Library\Watersheds\WBD_HU_12_IA.shp" name="Shapefile" type="Local Area Network" format="" description="" size="" mimeType=""/>
+  </links>
+  <dates/>
+  <fees></fees>
+  <constraints type="Access">None</constraints>
+  <rights>None</rights>
+  <encoding></encoding>
+  <crs>
+    <spatialrefsys nativeFormat="Wkt">
+      <wkt></wkt>
+      <proj4></proj4>
+      <srsid>0</srsid>
+      <srid>0</srid>
+      <authid></authid>
+      <description></description>
+      <projectionacronym></projectionacronym>
+      <ellipsoidacronym></ellipsoidacronym>
+      <geographicflag>false</geographicflag>
+    </spatialrefsys>
+  </crs>
+  <extent>
+    <spatial minx="121181.21460799999476876" maxz="0" maxy="4996383.27356099989265203" crs="EPSG:4326" minz="0" maxx="772394.88315799995325506" dimensions="2" miny="4345677.5318579999729991"/>
+    <temporal>
+      <period>
+        <start></start>
+        <end></end>
+      </period>
+    </temporal>
+  </extent>
+</qgis>
