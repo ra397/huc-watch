@@ -10,3 +10,5 @@ CREATE TABLE huc12_mrms_2min (
     mean_rain_mm real,
     PRIMARY KEY (huc12_id, obs_time)
 );
+
+CREATE INDEX ON huc12_mrms_2min (obs_time);

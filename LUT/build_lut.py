@@ -1,4 +1,8 @@
 # Build a flat HUC12 -> MRMS lookup table for np.bincount aggregation
+# Usage: python build_lut.py [config.ini]
+import configparser
+import sys
+from pathlib import Path
 from shapely.geometry import shape
 import shapefile
 from coverage import coverage
@@ -11,12 +15,20 @@ def shp_to_geoms(path, id_field="HUC_12"):
     ids = [rec[id_field] for rec in sf.records()]
     return geoms, ids
 
-# MRMS GRID
-nx, ny = 7000, 3500
-dx, dy = 0.01, 0.01
-x0, y0 = -130.0, 55.0
+config_path = Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).parent / 'config.ini').resolve()
+config = configparser.ConfigParser()
+if not config.read(config_path):
+    sys.exit(f"Config file not found: {config_path}")
+base_dir = config_path.parent
 
-huc12s, huc12_ids = shp_to_geoms('HUC12/huc12.shp', 'HUC_12')
+grid = config['grid']
+nx, ny = grid.getint('nx'), grid.getint('ny')
+dx, dy = grid.getfloat('dx'), grid.getfloat('dy')
+x0, y0 = grid.getfloat('x0'), grid.getfloat('y0')
+
+shapefile_path = base_dir / config['features']['shapefile']
+
+huc12s, huc12_ids = shp_to_geoms(str(shapefile_path), config['features']['id_field'])
 
 all_idx, all_frac, all_area, all_groups = [], [], [], []
 

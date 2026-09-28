@@ -9,6 +9,11 @@ INSERT_HUC12_MRMS_2MIN = """
     SELECT id, %(obs_time)s, %(mean_rain_mm)s
     FROM huc12_regions
     WHERE huc12 = %(huc12)s
+    ON CONFLICT (huc12_id, obs_time) DO NOTHING
+"""
+
+SELECT_LATEST_OBS_TIME = """
+    SELECT max(obs_time) FROM huc12_mrms_2min
 """
 
 DELETE_OLDER_THAN_24H = """

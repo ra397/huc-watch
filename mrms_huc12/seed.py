@@ -1,7 +1,9 @@
+# Seeds huc12_regions from the LUT: python -m mrms_huc12.seed
 import numpy as np
-from db import insert_huc12
+from mrms_huc12 import LUT_PATH
+from mrms_huc12.db import get_conn, insert_huc12
 
-d = np.load('LUT/huc12_mrms_flat.npz')
+d = np.load(LUT_PATH)
 ids, idx, frac, area, groups = d['ids'], d['idx'], d['frac'], d['area'], d['groups']
 n = len(ids)
 
@@ -12,4 +14,5 @@ rows = [
     for code, area in zip(ids, huc_area)
 ]
 
-insert_huc12(rows)
+with get_conn() as conn:
+    insert_huc12(conn, rows)
