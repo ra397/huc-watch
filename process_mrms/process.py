@@ -1,12 +1,12 @@
-# Cron entry point: python -m mrms_huc12.process
+# Cron entry point: python -m process_mrms.process
 import logging
 import sys
 from datetime import datetime, timezone
-from mrms_huc12.db import get_conn, get_latest_obs_time, insert_huc12_mrms_2min, delete_older_than_24h
-from mrms_huc12.discovery import find_pending, key_url
-from mrms_huc12.rainfall import load_lut, read_mean_rain, build_rows
+from process_mrms.db import get_conn, get_latest_obs_time, insert_huc12_mrms_2min, delete_older_than_24h
+from process_mrms.discovery import find_pending, key_url
+from process_mrms.rainfall import load_lut, read_mean_rain, build_rows
 
-log = logging.getLogger('mrms_huc12.process')
+log = logging.getLogger('process_mrms.process')
 
 
 def process_pending(conn, ids, idx, frac, groups, n):

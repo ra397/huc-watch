@@ -93,7 +93,7 @@ python LUT/build_lut.py                    # uses LUT/config.ini
 python LUT/build_lut.py path/to/other.ini  # or an alternative config
 ```
 
-The cron job always reads `LUT/huc12_mrms_flat.npz` (see `LUT_PATH` in `mrms_huc12/__init__.py`).
+The cron job always reads `LUT/huc12_mrms_flat.npz` (see `LUT_PATH` in `process_mrms/__init__.py`).
 If you change `[output] path`, update `LUT_PATH` to match.
 
 ## 3. Create the database
@@ -103,12 +103,12 @@ This setup uses a dedicated PostgreSQL cluster on port 5433, separate from the d
 
 ```bash
 # Dedicated cluster (Debian/Ubuntu postgresql-common tooling)
-sudo pg_createcluster 16 mrms_huc12 --port=5433 --start
-pg_lsclusters    # should show 16 mrms_huc12 5433 online
+sudo pg_createcluster 16 process_mrms --port=5433 --start
+pg_lsclusters    # should show 16 process_mrms 5433 online
 
 # Application role and database
 sudo -u postgres psql -p 5433 -c "CREATE ROLE hydrobot LOGIN PASSWORD 'choose-a-password';"
-sudo -u postgres createdb -p 5433 -O hydrobot mrms_huc12
+sudo -u postgres createdb -p 5433 -O hydrobot process_mrms
 ```
 
 To start the cluster automatically on boot: `sudo systemctl enable postgresql@16-mrms_huc12`.
@@ -151,7 +151,7 @@ This creates:
 ## 6. Seed HUC12 regions
 
 ```bash
-python -m mrms_huc12.seed
+python -m process_mrms.seed
 psql -c "SELECT count(*) FROM huc12_regions;"    # 1712 for the bundled Iowa shapefile
 ```
 
@@ -162,7 +162,7 @@ the LUT.
 ## 7. Test a run manually
 
 ```bash
-python -m mrms_huc12.process
+python -m process_mrms.process
 ```
 
 The first run (empty table) processes only the most recent released file for the current UTC day.
@@ -203,7 +203,7 @@ Add (replace both paths):
 To test in a cron-like environment before relying on the schedule:
 
 ```bash
-env -i HOME=$HOME sh -c 'cd /home/<you>/mrms-huc12 && /home/<you>/miniconda3/envs/mrms-huc12/bin/python -m mrms_huc12.process'
+env -i HOME=$HOME sh -c 'cd /home/<you>/mrms-huc12 && /home/<you>/miniconda3/envs/mrms-huc12/bin/python -m process_mrms.process'
 ```
 
 ### Log rotation (recommended)

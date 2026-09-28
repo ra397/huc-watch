@@ -1,3 +1,7 @@
+GRANT ALL ON SCHEMA public TO hydrobot;
+
+SET ROLE hydrobot;
+
 CREATE TABLE huc12_regions (
     id smallserial PRIMARY KEY,
     huc12 char(12) NOT NULL UNIQUE,

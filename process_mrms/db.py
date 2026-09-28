@@ -1,8 +1,8 @@
 import psycopg
 from dotenv import load_dotenv
-from mrms_huc12 import PROJECT_ROOT
-from mrms_huc12.queries import (INSERT_HUC12_REGION, INSERT_HUC12_MRMS_2MIN, SELECT_LATEST_OBS_TIME,
-                     DELETE_OLDER_THAN_24H)
+from process_mrms import PROJECT_ROOT
+from process_mrms.queries import (INSERT_HUC12_REGION, INSERT_HUC12_MRMS_2MIN, SELECT_LATEST_OBS_TIME,
+                                  DELETE_OLDER_THAN_24H)
 
 load_dotenv(PROJECT_ROOT / '.env')
 

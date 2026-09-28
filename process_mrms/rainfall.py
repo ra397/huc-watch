@@ -1,6 +1,6 @@
 import numpy as np
 from osgeo import gdal
-from mrms_huc12 import LUT_PATH
+from process_mrms import LUT_PATH
 
 gdal.UseExceptions()
 gdal.SetConfigOption('GDAL_HTTP_MAX_RETRY', '5')
